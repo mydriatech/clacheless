@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  clacheless:
+  - apiVersion: v2
+    appVersion: 0.1.1
+    created: "2025-10-03T12:54:02.604309575Z"
+    description: Lightweight distributed in-memory cache deployment example.
+    digest: 75641a8be1f18693cfa0e7f06110487f27a2d74def38c644157fc7e5838042d6
+    name: clacheless
+    type: application
+    urls:
+    - https://github.com/mydriatech/clacheless/releases/download/clacheless-0.1.1/clacheless-0.1.1.tgz
+    version: 0.1.1
+generated: "2025-10-03T12:54:02.604316318Z"
