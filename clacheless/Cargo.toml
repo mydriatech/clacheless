@@ -1,0 +1,36 @@
+[package]
+version = { workspace = true }
+edition = { workspace = true }
+license = { workspace = true }
+repository = { workspace = true }
+publish = { workspace = true }
+name = "clacheless"
+description = "Clacheless library"
+
+build = "build.rs"
+
+[package.metadata.cargo-machete]
+ignored = [
+    "tonic-prost",
+    "prost"
+]
+
+[dependencies]
+tyst = { workspace = true, features = [] }
+
+# Async and concurrency
+crossbeam-skiplist = { workspace = true, features = [] }
+tokio = { workspace = true, features = [] }
+
+# Logging and tracing
+log = { workspace = true, features = [] }
+
+# gRPC
+tonic = { version = "0.14", default-features = true, features = [] }
+tonic-prost = { version = "0.14", default-features = true, features = [] }
+prost = { version = "0.14", default-features = true, features = [] }
+
+[build-dependencies]
+# gRPC
+tonic-prost-build = { version = "0.14", default-features = true, features = [] }
+protoc-bin-vendored = { version = "3.2", default-features = false, features = [] }

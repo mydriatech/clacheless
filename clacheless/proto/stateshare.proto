@@ -1,0 +1,38 @@
+syntax = "proto3";
+package stateshare;
+
+service StateShare {
+    // Request a state transfer from the remote node.
+    rpc InitStateTransfer (InitStateTransferRequest) returns (InitStateTransferReply);
+
+    // Push a cache entry to the remote node.
+    rpc PutCacheEntry (PutCacheEntryRequest) returns (PutCacheEntryReply);
+
+    // Send the local node's cluster view to the remote.
+    rpc StateViewUpdate (StateViewUpdateRequest) returns (StateViewUpdateReply);
+}
+
+message InitStateTransferRequest {
+    uint32 reciever_node_ordinal = 1;
+    map<uint64, uint64> data_origin_id_and_baseline = 2;
+}
+
+message InitStateTransferReply {}
+
+message PutCacheEntryRequest {
+   string key = 1;
+   uint64 this_update_micros = 2;
+   uint64 expires = 3;
+   bytes object_bytes = 4;
+   uint64 origin_node_id = 5;
+   uint64 origin_node_update_seq = 6;
+}
+
+message PutCacheEntryReply {}
+
+message StateViewUpdateRequest {
+    uint32 sender_node_ordinal = 1;
+    map<uint64, uint64> view = 2;
+}
+
+message StateViewUpdateReply {}

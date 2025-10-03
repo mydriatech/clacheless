@@ -1,0 +1,19 @@
+# Headless service for the StatefulSet to enable communication between the
+# Pods with stable addresses.
+apiVersion: v1
+kind: Service
+metadata:
+  name: clacheless-intra
+  labels:
+    app.kubernetes.io/name: clacheless-intra
+    app.kubernetes.io/instance: "{{ .Release.Name }}"
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  ports:
+  - port: 9000
+    name: intra
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: clacheless
+    app.kubernetes.io/instance: "{{ .Release.Name }}"

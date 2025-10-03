@@ -1,0 +1,27 @@
+[package]
+version = { workspace = true }
+edition = { workspace = true }
+license = { workspace = true }
+repository = { workspace = true }
+publish = { workspace = true }
+name = "clacheless-bin"
+description = "Clacheless runnable"
+
+[[bin]]
+name = "clacheless-cli"
+test = false
+bench = false
+
+[dependencies]
+clacheless = { path = "../clacheless" }
+clacheless_api_rest = { path = "../clacheless-api-rest" }
+
+# Async and concurrency
+tokio = { workspace = true, features = [] }
+
+# Logging and tracing
+log = { workspace = true, features = [] }
+env_logger = { workspace = true, features = [] }
+
+# HTTP API client
+reqwest = { workspace = true, features = [] }

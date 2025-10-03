@@ -1,0 +1,29 @@
+[package]
+version = { workspace = true }
+edition = { workspace = true }
+license = { workspace = true }
+repository = { workspace = true }
+publish = { workspace = true }
+name = "clacheless_api_rest"
+description = "Clacheless REST API"
+
+[[bin]]
+name = "openapi"
+test = false
+bench = false
+
+[dependencies]
+clacheless = { path = "../clacheless" }
+
+#tyst = { workspace = true, features = [] }
+tyst_api_rest_health = { workspace = true, features = [] }
+
+# Async and concurrency
+futures = { version = "0.3", default-features = false, features = ["std", "async-await"] }
+
+# Logging and tracing
+log = { workspace = true, features = [] }
+
+# REST API
+actix-web = { workspace = true, features = [] }
+utoipa = { workspace = true, features = [] }
